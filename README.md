@@ -7,7 +7,7 @@ Jogo interativo de Pedra, Papel e Tesoura desenvolvido em C# com sistema de múl
 | Nome | RM |
 |------|-----|
 | **Gustavo Oliveira** | 559163 |
-| **Gabriel Vasque** | 557056 |
+| **Gabriel Vasquez** | 557056 |
 | **Augusto Mendonça** | 558371 |
 
 ---
@@ -82,17 +82,7 @@ Jogo interativo de Pedra, Papel e Tesoura desenvolvido em C# com sistema de múl
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
 
-- **Linguagem**: C# 12.0
-- **Framework**: .NET 8.0
-- **Paradigma**: Programação Procedural
-- **Estruturas de Dados**:
-  - `Dictionary<string, Estatisticas>` para armazenamento de dados
-  - `Enum` para definição de resultados
-  - `Class` para modelagem de estatísticas
-
----
 
 ## 📁 Estrutura do Código
 
@@ -110,85 +100,10 @@ Jogo interativo de Pedra, Papel e Tesoura desenvolvido em C# com sistema de múl
 | `AtualizarEstatisticas()` | Atualiza contadores após cada partida |
 | `ObterEntradaValida()` | Valida entrada do usuário |
 
-### Classes e Enums
 
-```csharp
-// Classe para armazenar estatísticas do jogador
-class Estatisticas
-{
-    public int Vitorias { get; set; }
-    public int Derrotas { get; set; }
-    public int Empates { get; set; }
-}
 
-// Enum para tipos de resultado
-enum ResultadoPartida
-{
-    Vitoria,
-    Derrota,
-    Empate
-}
-```
 
----
 
-## 🎨 Características Técnicas
-
-### ✅ Validação de Dados
-- Validação de todas as entradas do usuário
-- Tratamento de entradas vazias ou inválidas
-- Loop de validação até entrada correta
-
-### 🔄 Modularização
-- Código organizado em métodos específicos
-- Responsabilidade única para cada função
-- Fácil manutenção e expansão
-
-### 💾 Persistência de Dados (em memória)
-- Estatísticas mantidas durante toda a sessão
-- Suporte para múltiplos jogadores simultâneos
-- Dados organizados em estrutura Dictionary
-
-### 🎯 Lógica de Jogo
-- Implementação correta das regras do Jokempo
-- Geração aleatória de jogadas do computador
-- Detecção precisa de vitória, derrota e empate
-
----
-
-## 📊 Exemplo de Estatísticas
-
-```
-📊 ESTATÍSTICAS DOS JOGADORES
-
-👤 Gustavo
-   ├─ 🎉 Vitórias: 15
-   ├─ 😢 Derrotas: 8
-   ├─ 🤝 Empates: 5
-   ├─ 🎮 Total de partidas: 28
-   └─ 📈 Taxa de vitória: 53.6%
-
-👤 Gabriel
-   ├─ 🎉 Vitórias: 12
-   ├─ 😢 Derrotas: 10
-   ├─ 🤝 Empates: 3
-   ├─ 🎮 Total de partidas: 25
-   └─ 📈 Taxa de vitória: 48.0%
-```
-
----
-
-## 👥 Desenvolvedores
-
-Este projeto foi desenvolvido por:
-
-| Nome | RM |
-|------|-----|
-| **Gustavo Oliveira** | 559163 |
-| **Gabriel Vasque** | 557056 |
-| **Augusto Mendonça** | 558371 |
-
----
 
 ## 📝 Histórico de Versões
 
@@ -201,37 +116,3 @@ Este projeto foi desenvolvido por:
 
 ---
 
-## 🔮 Funcionalidades Futuras (Roadmap)
-
-- [ ] Persistência de dados em arquivo/banco de dados
-- [ ] Modo de jogo multiplayer (jogador vs jogador)
-- [ ] Ranking global de jogadores
-- [ ] Histórico detalhado de partidas
-- [ ] Temas de cores personalizáveis
-- [ ] Modo torneio
-
----
-
-## 📄 Licença
-
-Este projeto foi desenvolvido para fins educacionais.
-
----
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para:
-- Reportar bugs
-- Sugerir novas funcionalidades
-- Melhorar a documentação
-- Submeter pull requests
-
----
-
-## 📞 Contato
-
-Para dúvidas ou sugestões sobre o projeto, entre em contato com os desenvolvedores através do GitHub.
-
----
-
-**Desenvolvido com 💙 em C#**
