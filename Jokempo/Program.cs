@@ -26,13 +26,13 @@ static char ExibirBoasVindas()
 {
     Console.WriteLine("😀 Olá! Vamos jogar Jokempo?");
     Console.WriteLine("1 - Sim ou 0 - Não");
-    return Console.ReadKey().KeyChar;
+    return ObterEntradaValida(new[] { '0', '1' });
 }
 
 static char ObterEscolhaJogador()
 {
     Console.WriteLine("Escolha uma opção: 0 - Pedra ✊, 1 - Papel ✋ ou 2 - Tesoura ✌");
-    return Console.ReadKey().KeyChar;
+    return ObterEntradaValida(new[] { '0', '1', '2' });
 }
 
 static int GerarEscolhaComputador()
@@ -97,7 +97,23 @@ static char PerguntarJogarNovamente()
 {
     Console.WriteLine("\nQuer jogar de novo?");
     Console.WriteLine("1 - Sim ou 0 - Não");
-    return Console.ReadKey().KeyChar;
+    return ObterEntradaValida(new[] { '0', '1' });
+}
+
+static char ObterEntradaValida(char[] opcoesValidas)
+{
+    char entrada;
+    do
+    {
+        entrada = Console.ReadKey().KeyChar;
+
+        if (!opcoesValidas.Contains(entrada))
+        {
+            Console.WriteLine($"\n❌ Opção inválida! Por favor, escolha uma das opções válidas.");
+        }
+    } while (!opcoesValidas.Contains(entrada));
+
+    return entrada;
 }
 
 static void ExibirDespedida()
