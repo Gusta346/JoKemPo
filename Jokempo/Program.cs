@@ -1,37 +1,59 @@
-﻿// See https://aka.ms/new-console-template for more information
+// See https://aka.ms/new-console-template for more information
 using System;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-var continuar = ExibirBoasVindas();
+var nomeJogador = ObterNomeJogador();
+var continuar = ExibirBoasVindas(nomeJogador);
 
 while(continuar == '1')
 {
-    Console.WriteLine("Então vamos começar...");
+    Console.Clear();
+    Console.WriteLine("\n" + new string('=', 50));
+    Console.WriteLine("🎮 NOVA RODADA");
+    Console.WriteLine(new string('=', 50) + "\n");
 
     var opcaoJogador = ObterEscolhaJogador();
     var opcaoPC = GerarEscolhaComputador();
 
+    Console.WriteLine();
     ExibirEscolhaJogador(opcaoJogador);
     ExibirEscolhaComputador(opcaoPC);
 
-    ExibirResultado(opcaoJogador, opcaoPC);
+    Console.WriteLine("\n" + new string('-', 50));
+    ExibirResultado(opcaoJogador, opcaoPC, nomeJogador);
+    Console.WriteLine(new string('-', 50));
 
     continuar = PerguntarJogarNovamente();
 }
 
-ExibirDespedida();
+ExibirDespedida(nomeJogador);
 
-static char ExibirBoasVindas()
+static string ObterNomeJogador()
 {
-    Console.WriteLine("😀 Olá! Vamos jogar Jokempo?");
-    Console.WriteLine("1 - Sim ou 0 - Não");
+    Console.WriteLine("\n" + new string('=', 50));
+    Console.WriteLine("🎮 BEM-VINDO AO JOKEMPO!");
+    Console.WriteLine(new string('=', 50));
+    Console.Write("\n😀 Olá! Qual é o seu nome? ");
+    var nome = Console.ReadLine();
+    return string.IsNullOrWhiteSpace(nome) ? "Jogador" : nome;
+}
+
+static char ExibirBoasVindas(string nomeJogador)
+{
+    Console.WriteLine($"\n\n😀 Olá {nomeJogador}! Vamos jogar Jokempo?");
+    Console.WriteLine("\n1 - Sim\n0 - Não\n");
+    Console.Write("Sua escolha: ");
     return ObterEntradaValida(new[] { '0', '1' });
 }
 
 static char ObterEscolhaJogador()
 {
-    Console.WriteLine("Escolha uma opção: 0 - Pedra ✊, 1 - Papel ✋ ou 2 - Tesoura ✌");
+    Console.WriteLine("Escolha sua jogada:");
+    Console.WriteLine("\n  0 - Pedra ✊");
+    Console.WriteLine("  1 - Papel ✋");
+    Console.WriteLine("  2 - Tesoura ✌\n");
+    Console.Write("Sua escolha: ");
     return ObterEntradaValida(new[] { '0', '1', '2' });
 }
 
@@ -45,13 +67,13 @@ static void ExibirEscolhaJogador(char opcao)
     switch (opcao)
     {
         case '0':
-            Console.WriteLine("\nVocê escoheu Pedra ✊!");
+            Console.WriteLine("\n👤 Você escolheu: Pedra ✊");
             break;
         case '1':
-            Console.WriteLine("\nVocê escoheu Papel ✋");
+            Console.WriteLine("\n👤 Você escolheu: Papel ✋");
             break;
         case '2':
-            Console.WriteLine("\nVocê escoheu Tesoura ✌");
+            Console.WriteLine("\n👤 Você escolheu: Tesoura ✌");
             break;
     }
 }
@@ -61,13 +83,13 @@ static void ExibirEscolhaComputador(int opcaoPC)
     switch (opcaoPC)
     {
         case 0:
-            Console.WriteLine("\nEu escolhi Pedra ✊!");
+            Console.WriteLine("🤖 Computador escolheu: Pedra ✊");
             break;
         case 1:
-            Console.WriteLine("\nEu escolhi Papel ✋");
+            Console.WriteLine("🤖 Computador escolheu: Papel ✋");
             break;
         case 2:
-            Console.WriteLine("\nEu escolhi Tesoura ✌");
+            Console.WriteLine("🤖 Computador escolheu: Tesoura ✌");
             break;
     }
 }
@@ -83,20 +105,21 @@ static bool VerificarVitoria(char opcaoJogador, int opcaoPC)
     };
 }
 
-static void ExibirResultado(char opcaoJogador, int opcaoPC)
+static void ExibirResultado(char opcaoJogador, int opcaoPC, string nomeJogador)
 {
     if (int.Parse(opcaoJogador.ToString()) == opcaoPC)
-        Console.WriteLine("\n😀 Legal! Nós empatamos!");
+        Console.WriteLine("\n🤝 EMPATE! Nós empatamos!");
     else if (VerificarVitoria(opcaoJogador, opcaoPC))
-        Console.WriteLine("\n😀 Parabéns! Você venceu.");
+        Console.WriteLine($"\n🎉 VITÓRIA! Parabéns {nomeJogador}! Você venceu!");
     else
-        Console.WriteLine("\n😀 Haha, eu venci! Não foi dessa vez. Você pode ter mais sorte na próxima.");
+        Console.WriteLine($"\n😢 DERROTA! Não foi dessa vez {nomeJogador}. Tente novamente!");
 }
 
 static char PerguntarJogarNovamente()
 {
-    Console.WriteLine("\nQuer jogar de novo?");
-    Console.WriteLine("1 - Sim ou 0 - Não");
+    Console.WriteLine("\n\nQuer jogar de novo?");
+    Console.WriteLine("\n1 - Sim\n0 - Não\n");
+    Console.Write("Sua escolha: ");
     return ObterEntradaValida(new[] { '0', '1' });
 }
 
@@ -116,7 +139,11 @@ static char ObterEntradaValida(char[] opcoesValidas)
     return entrada;
 }
 
-static void ExibirDespedida()
+static void ExibirDespedida(string nomeJogador)
 {
-    Console.WriteLine("👋 Tchau! Até a próxima");
+    Console.Clear();
+    Console.WriteLine("\n" + new string('=', 50));
+    Console.WriteLine($"👋 Tchau {nomeJogador}! Até a próxima!");
+    Console.WriteLine("   Obrigado por jogar Jokempo! 🎮");
+    Console.WriteLine(new string('=', 50) + "\n");
 }
