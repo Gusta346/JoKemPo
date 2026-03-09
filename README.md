@@ -1,12 +1,14 @@
 # 🎮 Jokempo - Jogo de Pedra, Papel e Tesoura
 
-Um jogo interativo de Pedra, Papel e Tesoura (Jokempo) desenvolvido em C# com interface de console, sistema de múltiplos jogadores e estatísticas detalhadas.
+Jogo interativo de Pedra, Papel e Tesoura desenvolvido em C# com sistema de múltiplos jogadores e estatísticas.
 
----
+## 👥 Desenvolvedores
 
-## 📋 Sobre o Projeto
-
-Este projeto foi desenvolvido como parte de uma atividade acadêmica, implementando um jogo clássico de Jokempo com recursos avançados como sistema de estatísticas, suporte a múltiplos jogadores e interface amigável com emojis.
+| Nome | RM |
+|------|-----|
+| **Gustavo Oliveira** | 559163 |
+| **Gabriel Vasque** | 557056 |
+| **Augusto Mendonça** | 558371 |
 
 ---
 
@@ -71,44 +73,12 @@ Este projeto foi desenvolvido como parte de uma atividade acadêmica, implementa
 
 ## 🎯 Como Jogar
 
-### 1️⃣ Início
-- Digite seu nome quando solicitado
-- Você será direcionado ao menu principal
-
-### 2️⃣ Menu Principal
-```
-==================================================
-🎮 JOKEMPO - MENU PRINCIPAL
-==================================================
-
-👤 Jogador atual: [Seu Nome]
-
-  1 - Jogar 🎲
-  2 - Trocar de jogador 🔄
-  3 - Ver estatísticas 📊
-  4 - Sair 🚪
-```
-
-### 3️⃣ Opções Disponíveis
-
-#### 🎲 Jogar
-- Escolha sua jogada (0 - Pedra, 1 - Papel, 2 - Tesoura)
-- Veja o resultado contra o computador
-- Suas estatísticas são atualizadas automaticamente
-- Continue jogando ou retorne ao menu
-
-#### 🔄 Trocar de Jogador
-- Digite o nome de outro jogador
-- Jogadores novos são cadastrados automaticamente
-- Jogadores existentes têm suas estatísticas carregadas
-
-#### 📊 Ver Estatísticas
-- Visualize o desempenho de todos os jogadores
-- Veja vitórias, derrotas, empates e taxa de sucesso
-- Compare seu desempenho com outros jogadores
-
-#### 🚪 Sair
-- Encerra o jogo com mensagem personalizada de despedida
+1. Digite seu nome
+2. Escolha uma opção no menu:
+   - **1 - Jogar** → Escolha Pedra (0), Papel (1) ou Tesoura (2)
+   - **2 - Trocar jogador** → Mude para outro jogador
+   - **3 - Ver estatísticas** → Veja o desempenho de todos
+   - **4 - Sair** → Encerra o jogo
 
 ---
 
