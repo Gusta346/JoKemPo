@@ -3,37 +3,61 @@ using System;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-Console.WriteLine("😀 Olá! Vamos jogar Jokempo?");
-Console.WriteLine("1 - Sim ou 0 - Não");
-
-var continuar = Console.ReadKey().KeyChar;
+var continuar = ExibirBoasVindas();
 
 while(continuar == '1')
 {
     Console.WriteLine("Então vamos começar...");
+
+    var opcaoJogador = ObterEscolhaJogador();
+    var opcaoPC = GerarEscolhaComputador();
+
+    ExibirEscolhaJogador(opcaoJogador);
+    ExibirEscolhaComputador(opcaoPC);
+
+    ExibirResultado(opcaoJogador, opcaoPC);
+
+    continuar = PerguntarJogarNovamente();
+}
+
+ExibirDespedida();
+
+static char ExibirBoasVindas()
+{
+    Console.WriteLine("😀 Olá! Vamos jogar Jokempo?");
+    Console.WriteLine("1 - Sim ou 0 - Não");
+    return Console.ReadKey().KeyChar;
+}
+
+static char ObterEscolhaJogador()
+{
     Console.WriteLine("Escolha uma opção: 0 - Pedra ✊, 1 - Papel ✋ ou 2 - Tesoura ✌");
-    var opcao = Console.ReadKey().KeyChar;
+    return Console.ReadKey().KeyChar;
+}
 
-    var opcaoPC = new Random().Next(3);
+static int GerarEscolhaComputador()
+{
+    return new Random().Next(3);
+}
 
-    bool vitoria = false;
-
+static void ExibirEscolhaJogador(char opcao)
+{
     switch (opcao)
     {
         case '0':
             Console.WriteLine("\nVocê escoheu Pedra ✊!");
-            vitoria = (opcaoPC == 2);
             break;
         case '1':
             Console.WriteLine("\nVocê escoheu Papel ✋");
-            vitoria = (opcaoPC == 0);
             break;
         case '2':
             Console.WriteLine("\nVocê escoheu Tesoura ✌");
-            vitoria = (opcaoPC == 1);
             break;
     }
+}
 
+static void ExibirEscolhaComputador(int opcaoPC)
+{
     switch (opcaoPC)
     {
         case 0:
@@ -46,16 +70,37 @@ while(continuar == '1')
             Console.WriteLine("\nEu escolhi Tesoura ✌");
             break;
     }
+}
 
-    if (int.Parse(opcao.ToString()) == opcaoPC)
+static bool VerificarVitoria(char opcaoJogador, int opcaoPC)
+{
+    return opcaoJogador switch
+    {
+        '0' => opcaoPC == 2,
+        '1' => opcaoPC == 0,
+        '2' => opcaoPC == 1,
+        _ => false
+    };
+}
+
+static void ExibirResultado(char opcaoJogador, int opcaoPC)
+{
+    if (int.Parse(opcaoJogador.ToString()) == opcaoPC)
         Console.WriteLine("\n😀 Legal! Nós empatamos!");
-    else if (vitoria)
+    else if (VerificarVitoria(opcaoJogador, opcaoPC))
         Console.WriteLine("\n😀 Parabéns! Você venceu.");
     else
         Console.WriteLine("\n😀 Haha, eu venci! Não foi dessa vez. Você pode ter mais sorte na próxima.");
+}
 
+static char PerguntarJogarNovamente()
+{
     Console.WriteLine("\nQuer jogar de novo?");
     Console.WriteLine("1 - Sim ou 0 - Não");
-    continuar = Console.ReadKey().KeyChar;
+    return Console.ReadKey().KeyChar;
 }
-Console.WriteLine("👋 Tchau! Até a próxima");
+
+static void ExibirDespedida()
+{
+    Console.WriteLine("👋 Tchau! Até a próxima");
+}
